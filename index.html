@@ -1,67 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <div class="card-header">
-        Weather Dashboard
+    <div class="card-header page-header">
+      <h1>Weather Dashboard</h1>
     </div>
-<div class="row container-fluid">
-    <!-- side col for search and saved citys -->
-    <div class="col-2">
+    <div class="container-fluid">
+    <div class="row">
+      <!-- side col for search and saved citys -->
+      <div class="col-4">
         <!-- search row -->
         <div class="row">
-            <div>Search for a City:</div>
-            <div class="input-group mb-3">
-                <input id="search" type="text" class="form-control"  aria-label="Recipient's username" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button id="searchBtn" type="button" class="btn btn-primary">Search</button>
-                </div>
-              </div>
+          <div>Search for a City:</div>
+          <div class="input-group mb-3">
+            <input
+              id="search"
+              type="text"
+              class="form-control"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <div class="input-group-append">
+              <button id="searchBtn" type="button" class="btn btn-primary">
+                Search
+              </button>
+            </div>
+          </div>
         </div>
         <!-- saved citys -->
         <div class="row">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button></li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-              </div>
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                  Block level button
+                </button>
+              </li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
         </div>
-    </div>
-    <!-- col for current weather and 5 day forcast -->
-    <div class="col-8 container-fluid">
+      </div>
+      <!-- col for current weather and 5 day forcast -->
+      <div class="col-8">
         <!-- current conditions row -->
         <div class="row">
-            <div class="card">
-                <div class="card-body">
-                  <h5 id="current-city" class="card-title">Special title treatment</h5>
-                  <p id="current-temp" class="card-text">With supporting</p>
-                  <p id="current-humid" class="card-text">With supporting</p>
-                  <p id="current-wind" class="card-text">With supporting</p>
-                  <p id="current-uv" class="card-text">With supporting</p>
-                </div>
-              </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 id="current-city" class="card-title">
+                Special title treatment
+              </h5>
+              <p id="current-temp" class="card-text">With supporting</p>
+              <p id="current-humid" class="card-text">With supporting</p>
+              <p id="current-wind" class="card-text">With supporting</p>
+              <p id="current-uv" class="card-text">With supporting</p>
+            </div>
+          </div>
         </div>
         <!-- 5 day forcast -->
-        <div>5 Day Forecast:</div>
+        <div id="forecast-head">5 Day Forecast:</div>
         <!-- target for forcast rendering -->
-        <div id="forecast" class="row ">
-        </div>
+        <div id="forecast" class="row"></div>
+      </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <script src="./script.js"></script>
   </body>
 </html>
