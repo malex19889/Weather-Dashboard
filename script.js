@@ -30,10 +30,7 @@ $("#searchBtn").on("click", function () {
 function currentWeatherCall() {
   $("#curr-icon").empty();
   // current weather API URL
-  var weatherURL =
-    "http//api.openweathermap.org/data/2.5/weather?q=" +
-    city +
-    "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
+  var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
   $.ajax({
     url: weatherURL,
     method: "GET",
