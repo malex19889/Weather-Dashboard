@@ -1,5 +1,6 @@
 # Weather-Dashboard
-Weather Dashboard using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for searched cities. 
+
+A simple weather Dashboard using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for searched cities, and saving search history to local storage.
 
 ## User Story
 
@@ -26,17 +27,17 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
-
+## Demo
 The following image demonstrates the application functionality:
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+![weather dashboard demo](./assets/demo.JPG)
 
 ## Review
+created with HTML, CSS, javaScript, Jquery
 
 
-* The URL of the deployed application.
- https://malex19889.github.io/Weather-Dashboard/
+- The URL of the deployed application.
+  https://malex19889.github.io/Weather-Dashboard/
 
-* The URL of the GitHub repository. 
-https://github.com/malex19889/Weather-Dashboard.git
-
+- The URL of the GitHub repository.
+  https://github.com/malex19889/Weather-Dashboard.git
