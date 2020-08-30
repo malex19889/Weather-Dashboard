@@ -25,6 +25,8 @@ $("#searchBtn").on("click", function () {
   currentWeatherCall();
   // call and render 5 day forecast for search location
   forecastCall();
+  // empty search text
+  $("#search").val("");
 });
 // function to make call and render current weather for search loacation
 function currentWeatherCall() {
