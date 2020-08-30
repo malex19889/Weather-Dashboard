@@ -20,3 +20,12 @@ img{
 #forecast-head{
     font-weight: bolder;
 }
+#uvlow{
+    background-color: greenyellow;
+}
+#uvmid{
+    background-color: yellow;
+}
+#uvhigh{
+    background-color: red;
+}

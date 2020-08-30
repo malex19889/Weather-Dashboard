@@ -28,7 +28,7 @@ $("#searchBtn").on("click", function () {
 // function to make call and render current weather for search loacation
 function currentWeatherCall() {
   $("#curr-icon").empty();
-  // set url for current weather API URL
+  // current weather API URL
   var weatherURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -37,6 +37,7 @@ function currentWeatherCall() {
     url: weatherURL,
     method: "GET",
   }).then(function (response) {
+    console.log(response)
     var currIcon = $("<img>");
     var currIconCode = response.weather[0].icon;
     var iconUrl =
@@ -49,9 +50,11 @@ function currentWeatherCall() {
     $("#current-humid").text("Humidity: " + response.main.humidity + "%");
     $("#current-wind").text("Wind Speed: " + response.wind.speed + " mph");
     // set latitude from current weatehr response
-    var lat = response.coord.lat;
+    lat = response.coord.lat;
+    console.log(lat)
     // set longitude from current weather response
-    var lon = response.coord.lon;
+    lon = response.coord.lon;
+    console.log(lon)
     // UV index API URL
     uvURL =
       "https://api.openweathermap.org/data/2.5/uvi?lat=" +
@@ -64,8 +67,19 @@ function currentWeatherCall() {
       url: uvURL,
       method: "GET",
     }).then(function (uvResponse) {
+      console.log(uvResponse)
       // render uv index text
       $("#current-uv").text("UV Index: " + uvResponse.value);
+      uvIndex = uvResponse.value;
+      if ((uvIndex > 1) && (uvIndex <3)) {
+        $("#current-uv").attr("id","uvlow")
+      }
+      if ((uvIndex > 4) && (uvIndex <8)) {
+        $("#current-uv").attr("id","uvmid")
+      }
+      if (uvIndex >=8) {
+        $("#current-uv").attr("id","uvhigh")
+      }
     });
   });
 }
