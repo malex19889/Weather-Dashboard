@@ -26,56 +26,53 @@
       <h1>Weather Dashboard</h1>
     </div>
     <div class="container-fluid">
-    <div class="row">
-      <!-- side col for search and saved citys -->
-      <div class="col-4">
-        <!-- search row -->
-        <div class="row">
-          <div>Search for a City:</div>
-          <div class="input-group mb-3">
-            <input
-              id="search"
-              type="text"
-            />
-            <div class="input-group-append">
-              <button id="searchBtn" type="button" class="btn btn-primary">
-                🔎
-              </button>
+      <div class="row">
+        <!-- side col for search and saved citys -->
+        <div class="col-4">
+          <!-- search row -->
+          <div class="row">
+            <div>Search for a City:</div>
+            <div class="input-group mb-3">
+              <input id="search" type="text" />
+              <div class="input-group-append">
+                <button id="searchBtn" type="button" class="btn btn-primary">
+                  🔎
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- saved citys -->
+          <div class="row">
+            <div class="card" style="width: 18rem">
+              <div id="search-history" class="list-group list-group-flush">
+                <!-- items to be created from script -->
+              </div>
             </div>
           </div>
         </div>
-        <!-- saved citys -->
-        <div class="row">
-          <div class="card" style="width: 18rem;">
-            <div id="search-history" class="list-group list-group-flush">
-              <!-- items to be created from script -->
+        <!-- col for current weather and 5 day forcast -->
+        <div class="col-8">
+          <!-- current conditions row -->
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                <h5 id="current-city" class="card-title">
+                  Welcome to your weather dashboard
+                </h5>
+                <div id="curr-icon"></div>
+                <p id="current-temp" class="card-text"></p>
+                <p id="current-humid" class="card-text"></p>
+                <p id="current-wind" class="card-text"></p>
+                <p id="current-uv" class="card-text"></p>
+              </div>
             </div>
           </div>
+          <!-- 5 day forcast -->
+          <div id="forecast-head">5 Day Forecast:</div>
+          <!-- target for forcast rendering -->
+          <div id="forecast" class="row"></div>
         </div>
       </div>
-      <!-- col for current weather and 5 day forcast -->
-      <div class="col-8">
-        <!-- current conditions row -->
-        <div class="row">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="current-city" class="card-title">
-                Welcome to your weather dashboard
-              </h5>
-              <div id="curr-icon"></div>
-              <p id="current-temp" class="card-text"></p>
-              <p id="current-humid" class="card-text"></p>
-              <p id="current-wind" class="card-text"></p>
-              <p id="current-uv" class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <!-- 5 day forcast -->
-        <div id="forecast-head">5 Day Forecast:</div>
-        <!-- target for forcast rendering -->
-        <div id="forecast" class="row"></div>
-      </div>
-    </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
