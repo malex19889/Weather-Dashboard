@@ -1,5 +1,5 @@
 var city = null;
-var searchHist =[];
+var searchHist =["denver","new york","los angeles"];
 var cityHist = $("<button>");
 var currIcon = $("<img>");
 var currIconCode = null;
@@ -83,8 +83,8 @@ function forecastCall() {
 }
 function renderHist() {
   searchHist.push(city)
-  localStorage.setItem("cities", searchHist)
   $("#search-history").empty();
+  localStorage.setItem("cities", JSON.stringify(searchHist))
   // loop to create search history list
   for(var i = 0; i< searchHist.length; i++){
   //  create search history elemnt
@@ -100,19 +100,29 @@ function renderHist() {
   }
 }
 function load(){
-  citiesFromLs = localStorage.getItem("cities")
-  console.log(citiesFromLs)
-  $("#search-history").empty();
-  // loop to create search history list
-  for(var i = 0; i< citiesFromLs.length; i++){
+  citiesString = localStorage.getItem("cities")
+  searchHist = JSON.parse(citiesString)
+  if (searchHist != null) {
+    $("#search-history").empty();
+  // loop to create search history list from ls
+  for(var i = 0; i< searchHist.length; i++){
   //  create search history elemnt
   var cityHist = $("<div>");
   // Adding list class
   cityHist.addClass("list-group-item list-group-item-action");
-  // Add the items text with a value of searchHist at index i
-  cityHist.text(citiesFromLs[i]);
+  // Add the items text with a value of citiesFromLs at index i
+  cityHist.text(searchHist[i]);
   // Add list item to HTML
   $("#search-history").append(cityHist);
   }
+  city = searchHist[searchHist.length -1];
+  console.log(city)
+  currentWeatherCall();
+  forecastCall();
+  }else{
+    searchHist =[""];
+  }
+  
+
 }
 load();

@@ -2,7 +2,7 @@
     text-align: center;
     font-weight: bolder;
     background-color: rgb(38, 192, 219);
-    text:white
+    color:white
 }
 img{
     
@@ -12,4 +12,11 @@ img{
     margin: 1%;
     border: honeydew;
     border-style:groove ;
+}
+#search{
+    border: rgba(0, 38, 255, 0.287);
+    border-style: ridge;
+}
+#forecast-head{
+    font-weight: bolder;
 }
