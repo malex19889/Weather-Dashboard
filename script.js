@@ -1,7 +1,21 @@
+var city = null;
+var searchHist =[];
+var cityHist = $("<button>");
+var currIcon = $("<img>");
+var currIconCode = null;
+var iconUrl = "https://openweathermap.org/img/wn/"+currIconCode+"@2x.png";
+
 $("#searchBtn").on("click", function () {
   event.preventDefault();
-  var city = $("#search").val();
-  console.log(city);
+  city = $("#search").val();
+  
+  renderHist();
+  currentWeatherCall();
+  forecastCall();
+ });
+
+function currentWeatherCall() {
+  $("#curr-icon").empty();
   var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
   $.ajax({
     url: weatherURL,
@@ -9,9 +23,7 @@ $("#searchBtn").on("click", function () {
   }).then(function (response) {
     console.log(response);
     var currIcon = $("<img>");
-    var currIcon = $("<img>");
     var currIconCode = response.weather[0].icon;
-    console.log(currIconCode)
     var iconUrl = "https://openweathermap.org/img/wn/"+currIconCode+"@2x.png"
     currIcon.attr("src",iconUrl)
     $("#curr-icon").append(currIcon)
@@ -21,6 +33,7 @@ $("#searchBtn").on("click", function () {
     $("#current-wind").text("Wind Speed: "+response.wind.speed)
     lat = response.coord.lat;
     lon = response.coord.lon;
+    // UV index API URL
     uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&APPID=5d8fc476fadf80408832e74b2c7ff757"
     // call to get uv index
     $.ajax({
@@ -30,14 +43,9 @@ $("#searchBtn").on("click", function () {
       console.log(uvResponse);
       $("#current-uv").text("UV Index: "+uvResponse.value);
     });
-    
-  });
-});
-
-$("#searchBtn").on("click", function () {
-  event.preventDefault();
-  var city = $("#search").val();
-  console.log(city);
+  })
+}
+function forecastCall() {
   var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
   $.ajax({
     url: forecastURL,
@@ -72,4 +80,39 @@ $("#searchBtn").on("click", function () {
         i = i+8;
       }
   });
-});
+}
+function renderHist() {
+  searchHist.push(city)
+  localStorage.setItem("cities", searchHist)
+  $("#search-history").empty();
+  // loop to create search history list
+  for(var i = 0; i< searchHist.length; i++){
+  //  create search history elemnt
+  var cityHist = $("<div>");
+  // Adding list class
+  cityHist.addClass("list-group-item list-group-item-action");
+  // Add an id for save
+  cityHist.attr("id", "searchHist[i]");
+  // Add the items text with a value of searchHist at index i
+  cityHist.text(searchHist[i]);
+  // Add list item to HTML
+  $("#search-history").append(cityHist);
+  }
+}
+function load(){
+  citiesFromLs = localStorage.getItem("cities")
+  console.log(citiesFromLs)
+  $("#search-history").empty();
+  // loop to create search history list
+  for(var i = 0; i< citiesFromLs.length; i++){
+  //  create search history elemnt
+  var cityHist = $("<div>");
+  // Adding list class
+  cityHist.addClass("list-group-item list-group-item-action");
+  // Add the items text with a value of searchHist at index i
+  cityHist.text(citiesFromLs[i]);
+  // Add list item to HTML
+  $("#search-history").append(cityHist);
+  }
+}
+load();
