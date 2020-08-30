@@ -9,7 +9,7 @@ var currIcon = $("<img>");
 // var to store weather icon code
 var currIconCode = null;
 // URL for weather icon
-var iconUrl = "https://openweathermap.org/img/wn/" + currIconCode + "@2x.png";
+var iconUrl = "http://openweathermap.org/img/wn/" + currIconCode + "@2x.png";
 // incrementer for moment.js for 5day forecast
 var dayInc = 1;
 // var to set current date
@@ -30,7 +30,7 @@ function currentWeatherCall() {
   $("#curr-icon").empty();
   // current weather API URL
   var weatherURL =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    "http//api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
   $.ajax({
@@ -41,7 +41,7 @@ function currentWeatherCall() {
     var currIcon = $("<img>");
     var currIconCode = response.weather[0].icon;
     var iconUrl =
-      "https://openweathermap.org/img/wn/" + currIconCode + "@2x.png";
+      "http://openweathermap.org/img/wn/" + currIconCode + "@2x.png";
     currIcon.attr("src", iconUrl);
     // render current weather section
     $("#curr-icon").append(currIcon);
@@ -57,7 +57,7 @@ function currentWeatherCall() {
     console.log(lon)
     // UV index API URL
     uvURL =
-      "https://api.openweathermap.org/data/2.5/uvi?lat=" +
+      "http://api.openweathermap.org/data/2.5/uvi?lat=" +
       lat +
       "&lon=" +
       lon +
@@ -86,7 +86,7 @@ function currentWeatherCall() {
 // function to call and render 5 day forecast for search location
 function forecastCall() {
   var forecastURL =
-    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    "http://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
     "&units=imperial&APPID=5d8fc476fadf80408832e74b2c7ff757";
   $.ajax({
@@ -105,7 +105,7 @@ function forecastCall() {
       var humidity = $("<p>");
       // add text and class to card elements
       var iconCode = response.list[i].weather[0].icon;
-      var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+      var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
       forecastCard.addClass("card bg-primary text-white p-3");
       // date.text(response.list[i].dt_txt)
       date.text(moment().add(dayInc, "days").format("L"));
